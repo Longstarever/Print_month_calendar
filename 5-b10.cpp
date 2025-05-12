@@ -1,4 +1,3 @@
-/*2451504 µçĞÅ ÀîÄ«*/
 #include <iostream>
 #include <iomanip>
 using namespace std;
@@ -30,9 +29,9 @@ int zeller(int y, int m, int d) {
 
 int calendar(int nian, int yue, int xingqi) {
 	int i = 1, j = 0, tianshu, c;
-	c = ((nian % 4 == 0) && (nian % 100)) || (nian % 400 == 0);//ÈòÄê
+	c = ((nian % 4 == 0) && (nian % 100)) || (nian % 400 == 0);//é—°å¹´
 	c ? tianshu = 29 : tianshu = 28;
-	switch (yue) {//ÆäËûÔÂ
+	switch (yue) {//å…¶ä»–æœˆ
 		case 1:
 		case 3:
 		case 5:
@@ -63,7 +62,7 @@ void print(int rili[][42],int xingqi[],int tianshu[],int n) {
 				cout << endl;
 				break;
 			}
-			cout << right << setw(13) << yue << "ÔÂ" << setw(17) << "";
+			cout << right << setw(13) << yue << "æœˆ" << setw(17) << "";
 			mon = yue;
 			yue++;
 		}
@@ -81,7 +80,7 @@ void print(int rili[][42],int xingqi[],int tianshu[],int n) {
 				mon = yue - n;
 				for (; c<n;) {
 					for (hang = 0; hang < 6; hang++) {
-						if (hang > 4) {//ÅĞ¶ÏÊÇ·ñĞèÒª¼ÌĞøÖ´ĞĞÊä³ö
+						if (hang > 4) {//åˆ¤æ–­æ˜¯å¦éœ€è¦ç»§ç»­æ‰§è¡Œè¾“å‡º
 							for (i = yue - n; i < yue; i++) {
 								c = c + index[i];
 							}
@@ -97,13 +96,13 @@ void print(int rili[][42],int xingqi[],int tianshu[],int n) {
 						}
 						for (i = 0; i < 7; i++) {
 							if (rili[mon][hang * 7 + i] > rili[mon][hang * 7 + i+1]) {
-								index[mon] = 1;//´ú±í´ËÔÂËùÓĞÌìÊıÊä³öÍê±Ï
+								index[mon] = 1;//ä»£è¡¨æ­¤æœˆæ‰€æœ‰å¤©æ•°è¾“å‡ºå®Œæ¯•
 							}
 							if (rili[mon][hang * 7 + i] == 0) {
-								cout << setw(4) << " ";//0´ú±íÊä³ö4¸ö¿Õ¸ñ
+								cout << setw(4) << " ";//0ä»£è¡¨è¾“å‡º4ä¸ªç©ºæ ¼
 							}
 							else {
-								cout << left << setw(4)<<rili[mon][hang * 7 + i];//Õı³£Êä³öÈÕÆÚ
+								cout << left << setw(4)<<rili[mon][hang * 7 + i];//æ­£å¸¸è¾“å‡ºæ—¥æœŸ
 							}
 							for (j = yue - n; j < yue; j++) {
 								c = c + index[j];
@@ -152,8 +151,8 @@ int main() {
 	int nian, yue, ri = 1, xingqi[13] = {0}, tianshu[13] = {0}, i = 1, j = 0;
 	bool a = 0, b = 0, c = 0, d = 0, e = 0;
 	while (1) {
-		cout << "ÇëÊäÈëÄê·İ[1900-2100]" << endl;
-		cin >> nian ;   //¶ÁÈëxµÄ·½Ê½±ØĞëÊÇ cin>>intĞÍ±äÁ¿£¬²»ÔÊĞíÆäËû·½Ê½
+		cout << "è¯·è¾“å…¥å¹´ä»½[1900-2100]" << endl;
+		cin >> nian ;   //è¯»å…¥xçš„æ–¹å¼å¿…é¡»æ˜¯ cin>>intå‹å˜é‡ï¼Œä¸å…è®¸å…¶ä»–æ–¹å¼
 		if (cin.good() == 0) {
 			cin.clear();
 			cin.ignore(2451504, '\n');
@@ -169,7 +168,7 @@ int main() {
 		}
 	}
 	while (1) {
-		cout << "ÇëÊäÈëÃ¿ĞĞ´òÓ¡µÄÔÂ·İÊı[1/2/3/4/6/12]" << endl;
+		cout << "è¯·è¾“å…¥æ¯è¡Œæ‰“å°çš„æœˆä»½æ•°[1/2/3/4/6/12]" << endl;
 		cin >> n;
 		if (cin.good() == 0) {
 			cin.clear();
@@ -194,7 +193,7 @@ int main() {
 			break;
 		}
 	}
-	c = ((nian % 4 == 0) && (nian % 100)) || (nian % 400 == 0);//ÈòÄê
+	c = ((nian % 4 == 0) && (nian % 100)) || (nian % 400 == 0);//é—°å¹´
 	for (yue = 1; yue < 13; yue++) {
 		xingqi[yue] = zeller(nian, yue, ri);
 		tianshu[yue] = calendar(nian, yue, xingqi[yue]);
@@ -206,7 +205,7 @@ int main() {
 			rili[yue][t + i] = i + 1;
 		}
 	}
-	cout << nian << "ÄêµÄÈÕÀú:" << endl << endl;
+	cout << nian << "å¹´çš„æ—¥å†:" << endl << endl;
 	print(rili, xingqi, tianshu, n);
 	cout << endl;
 	return 0;
